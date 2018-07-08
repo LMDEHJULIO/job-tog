@@ -19,3 +19,177 @@ Migrating to CreateJobs (20180708053330)
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-07-08 05:33:42.958462"], ["updated_at", "2018-07-08 05:33:42.958462"]]
   [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-07-08 11:26:04 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.haml within layouts/application
+  Rendered jobs/index.html.haml within layouts/application (12.8ms)
+Completed 200 OK in 12144ms (Views: 12125.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2018-07-08 12:36:16 -0400
+Processing by JobsController#new as HTML
+  Rendering jobs/new.html.haml within layouts/application
+  Rendered jobs/_form.html.haml (137.9ms)
+  Rendered jobs/new.html.haml within layouts/application (175.5ms)
+Completed 500 Internal Server Error in 236ms (ActiveRecord: 2.5ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    1: = simple_form_for(@job, html: {class: 'form-horizontal'}) do |f|
+    2:   = f.input :title, label: "Job Title"
+    3:   = f.input :description, label: "Job Description"
+    4:   = f.input :company, "Your Company"
+    5:   = f.input :url, label: "Link to Job"
+    6:   br/
+    7:   = f.button :submit
+  
+app/views/jobs/_form.html.haml:4:in `block in _app_views_jobs__form_html_haml___1892332864983600271_70250729103200'
+app/views/jobs/_form.html.haml:1:in `_app_views_jobs__form_html_haml___1892332864983600271_70250729103200'
+app/views/jobs/new.html.haml:3:in `_app_views_jobs_new_html_haml__4588804951355978826_70250716729260'
+Started GET "/jobs/new" for 127.0.0.1 at 2018-07-08 12:36:51 -0400
+Processing by JobsController#new as HTML
+  Rendering jobs/new.html.haml within layouts/application
+  Rendered jobs/_form.html.haml (23.9ms)
+  Rendered jobs/new.html.haml within layouts/application (33.3ms)
+Completed 200 OK in 107ms (Views: 103.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/jobs" for 127.0.0.1 at 2018-07-08 12:42:05 -0400
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vWE5QKkRSfdfFWG+XD06U0dfJHNjPFNjjcXoGj34NxAFQ5gDSG+UNEAzVvveV66MQtxEy/MeryFs/keP8y7O4A==", "job"=>{"title"=>"Developer", "description"=>"Doing developer things ", "company"=>"Dev Co", "url"=>"#"}, "commit"=>"Create Job"}
+  [1m[35m (1.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "jobs" ("title", "description", "company", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Developer"], ["description", "Doing developer things "], ["company", "Dev Co"], ["url", "#"], ["created_at", "2018-07-08 16:42:06.014223"], ["updated_at", "2018-07-08 16:42:06.014223"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/1
+Completed 302 Found in 138ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/jobs/1" for 127.0.0.1 at 2018-07-08 12:42:06 -0400
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJob Load (0.6ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/show.html.erb within layouts/application
+  Rendered jobs/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 773ms (Views: 743.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/jobs/1" for 127.0.0.1 at 2018-07-08 12:42:47 -0400
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/show.html.haml within layouts/application
+  Rendered jobs/show.html.haml within layouts/application (9.1ms)
+Completed 200 OK in 148ms (Views: 140.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/jobs/1" for 127.0.0.1 at 2018-07-08 12:50:01 -0400
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJob Load (1.2ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/show.html.haml within layouts/application
+  Rendered jobs/show.html.haml within layouts/application (47.9ms)
+Completed 200 OK in 387ms (Views: 337.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-07-08 12:50:04 -0400
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.haml within layouts/application
+  Rendered jobs/index.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 76ms (Views: 71.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-07-08 12:55:04 -0400
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.haml within layouts/application
+  Rendered jobs/index.html.haml within layouts/application (33.4ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: %h1 This is the index page
+    2: 
+    3: - @jobs.each do |job|
+    4:   %h2= job.title
+    5:   %p= job.company
+  
+app/views/jobs/index.html.haml:3:in `_app_views_jobs_index_html_haml__1979257496500940947_70250725547640'
+Started GET "/" for 127.0.0.1 at 2018-07-08 12:55:25 -0400
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.haml within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.haml within layouts/application (29.1ms)
+Completed 200 OK in 200ms (Views: 143.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-07-08 12:56:18 -0400
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.haml within layouts/application
+  [1m[36mJob Load (0.5ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 78ms (Views: 74.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2018-07-08 12:56:29 -0400
+Processing by JobsController#new as HTML
+  Rendering jobs/new.html.haml within layouts/application
+  Rendered jobs/_form.html.haml (27.8ms)
+  Rendered jobs/new.html.haml within layouts/application (47.5ms)
+Completed 200 OK in 115ms (Views: 110.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/jobs" for 127.0.0.1 at 2018-07-08 12:56:57 -0400
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OTgniqZl9RncQNFqsISogvxN3Jf6uUxBEKNDYCG9Ga8yL3/VUV2W8TuWndu6X2qytnH8NPUwQE8MsbokXl3oVw==", "job"=>{"title"=>"Neew", "description"=>"New job", "company"=>"New co", "url"=>"#"}, "commit"=>"Create Job"}
+  [1m[35m (1.9ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "jobs" ("title", "description", "company", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Neew"], ["description", "New job"], ["company", "New co"], ["url", "#"], ["created_at", "2018-07-08 16:56:57.437788"], ["updated_at", "2018-07-08 16:56:57.437788"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/2
+Completed 302 Found in 21ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/jobs/2" for 127.0.0.1 at 2018-07-08 12:56:57 -0400
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mJob Load (0.5ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering jobs/show.html.haml within layouts/application
+  Rendered jobs/show.html.haml within layouts/application (10.7ms)
+Completed 200 OK in 153ms (Views: 143.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-07-08 12:57:03 -0400
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.haml within layouts/application
+  [1m[36mJob Load (4.5ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.haml within layouts/application (12.5ms)
+Completed 200 OK in 88ms (Views: 79.3ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-07-08 13:04:19 -0400
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.haml within layouts/application
+  [1m[36mJob Load (0.5ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.haml within layouts/application (48.8ms)
+Completed 200 OK in 159ms (Views: 142.9ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/jobs/2" for 127.0.0.1 at 2018-07-08 13:04:21 -0400
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering jobs/show.html.haml within layouts/application
+  Rendered jobs/show.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 218ms (Views: 210.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/jobs/1" for 127.0.0.1 at 2018-07-08 13:04:24 -0400
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/show.html.haml within layouts/application
+  Rendered jobs/show.html.haml within layouts/application (11.0ms)
+Completed 200 OK in 84ms (Views: 77.9ms | ActiveRecord: 0.2ms)
+
+
